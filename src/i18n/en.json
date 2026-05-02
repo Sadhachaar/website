@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "journey": "Our Journey",
+    "launchStations": "Launch Stations",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "lgci": "LGCI Calculator"
+  },
+  "hero": {
+    "tagline": "A Movement, Not a Product",
+    "title": "Human Operating System",
+    "subtitle": "Transforming society through principled living and timeless wisdom"
+  },
+  "stats": {
+    "livesResearched": "20M+ Lives Researched",
+    "statesImpacted": "16 States Impacted",
+    "familiesRestored": "327+ Families Restored",
+    "satisfactionRate": "99.9% Satisfaction"
+  },
+  "cta": {
+    "join": "Join the Movement",
+    "explore": "Explore More",
+    "calculate": "Calculate Your LGCI"
+  },
+  "footer": {
+    "rights": "All Rights Reserved",
+    "tagline": "Restoring Families, Rebuilding Communities"
+  }
+}
