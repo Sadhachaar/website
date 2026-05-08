@@ -1,42 +1,198 @@
 @import "tailwindcss";
 
 @theme {
-  --color-saffron: #FF9933;
-  --color-gold: #C89B3C;
-  --color-deepBlue: #1E3A5F;
-  --color-charcoal: #222222;
-  --color-lightGray: #666666;
+  /* Luxurious Gold Palette - Tuned to Logo.png */
+  --color-gold: #B38B3F;
+  --color-gold-light: #D4AF37;
+  --color-gold-dark: #8C6D2E;
+  --color-gold-muted: #D9C5A0;
+  
+  /* Metallic */
+  --color-silver: #B8B8B8;
+  --color-silver-light: #E5E5E5;
+  --color-platinum: #E8E8E8;
+  
+  /* Deep & Rich */
+  --color-deepCharcoal: #0F0F0F;
+  --color-charcoal: #1A1A1A;
+  --color-deepNavy: #0A1628;
+  --color-midnight: #0B1F3A;
+  
+  /* Neutrals */
+  --color-lightGray: #4A4A4A;
+  --color-muted: #6B6B6B;
   --color-softWhite: #FAFAFA;
+  --color-cream: #FDFBF7;
+  --color-ivory: #FFFFF8;
+  
+  /* Premium Fonts */
   --font-family-heading: 'Playfair Display', serif;
   --font-family-body: 'Inter', sans-serif;
+
+  /* Shadows */
+  --shadow-premium: 0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+  --shadow-gold: 0 20px 40px -10px rgba(201, 162, 39, 0.2);
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
+  
   body {
     font-family: var(--font-family-body);
+    font-weight: 400;
     color: var(--color-charcoal);
-    background: white;
+    background: var(--color-ivory);
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.01em;
+    overflow-x: hidden;
+  }
+
+  /* Refined Typography Hierarchy */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); letter-spacing: -0.02em; }
+  h2 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.01em; }
+  h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+
+  p {
+    line-height: 1.8;
+    font-size: 1.05rem;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-ivory);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gold-muted);
+    border-radius: 10px;
+    border: 2px solid var(--color-ivory);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold);
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: white;
   }
 }
 
 @layer components {
+  /* Premium Gold Gradient Button */
   .btn-primary {
-    @apply bg-saffron text-white px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:bg-gold hover:shadow-lg;
+    @apply relative overflow-hidden inline-flex items-center justify-center;
+    background: linear-gradient(135deg, var(--color-gold-dark) 0%, var(--color-gold) 50%, var(--color-gold-light) 100%);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    box-shadow: var(--shadow-gold);
   }
+  
+  .btn-primary::after {
+    content: '';
+    @apply absolute inset-0 bg-white opacity-0 transition-opacity duration-300;
+  }
+  
+  .btn-primary:hover {
+    @apply transform -translate-y-1 scale-[1.02];
+    box-shadow: 0 30px 60px -12px rgba(201, 162, 39, 0.4);
+  }
+
+  .btn-primary:hover::after {
+    @apply opacity-10;
+  }
+
+  /* Secondary Button - Elegant Outline */
   .btn-secondary {
-    @apply border-2 border-saffron text-saffron px-6 py-3 rounded-xl font-medium transition-all duration-300 hover:bg-saffron hover:text-white;
+    @apply relative inline-flex items-center justify-center;
+    border: 1.5px solid var(--color-gold);
+    color: var(--color-gold);
+    padding: 13px 31px;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    background: transparent;
   }
-  .card {
-    @apply bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.05)] p-6 transition-all duration-300 hover:shadow-xl;
+  
+  .btn-secondary:hover {
+    background: var(--color-gold);
+    color: white;
+    @apply transform -translate-y-1;
+    box-shadow: var(--shadow-gold);
   }
+
+  /* Glass Card - Modern Depth */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/40;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  }
+
+  .premium-card {
+    @apply bg-white rounded-3xl p-8 transition-all duration-500 border border-black/[0.03];
+    box-shadow: var(--shadow-premium);
+  }
+
+  .premium-card:hover {
+    @apply -translate-y-2 border-gold/20;
+    box-shadow: 0 40px 80px -15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Section Spacing */
   .section-padding {
-    @apply py-16 md:py-24 px-4 md:px-8;
+    @apply py-24 md:py-32 px-6 md:px-12;
   }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-family-heading);
+
+  /* Grain Texture Overlay */
+  .grain-overlay {
+    @apply fixed inset-0 pointer-events-none z-[100] opacity-[0.03];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* Decorative Badge */
+  .premium-badge {
+    @apply inline-flex items-center px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] border;
+    background: rgba(201, 162, 39, 0.05);
+    border-color: rgba(201, 162, 39, 0.2);
+    color: var(--color-gold-dark);
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  
+  .mask-radial {
+    mask-image: radial-gradient(circle at center, black, transparent);
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-500 hover:-translate-y-2;
+  }
+
+  .reveal-on-scroll {
+    @apply opacity-0 translate-y-8 transition-all duration-1000 ease-out;
+  }
+
+  .reveal-on-scroll.active {
+    @apply opacity-100 translate-y-0;
   }
 }
