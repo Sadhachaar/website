@@ -8,6 +8,9 @@ import LaunchStations from './pages/LaunchStations';
 import Pricing from './pages/Pricing';
 import Contact from './pages/Contact';
 import OurVision from './pages/OurVision';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Terms from './pages/Terms';
+import Ethics from './pages/Ethics';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -30,6 +33,9 @@ function App() {
           <Route path="pricing" element={<Pricing />} />
           <Route path="contact" element={<Contact />} />
           <Route path="our-vision" element={<OurVision />} />
+          <Route path="privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="terms" element={<Terms />} />
+          <Route path="ethics" element={<Ethics />} />
         </Route>
       </Routes>
     </BrowserRouter>

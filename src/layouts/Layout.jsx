@@ -3,6 +3,7 @@ import { motion, AnimatePresence, useSpring, useMotionValue } from 'framer-motio
 import { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import ScrollToTop from '../components/ScrollToTop';
 
 export default function Layout() {
   const location = useLocation();
@@ -63,6 +64,7 @@ export default function Layout() {
       </main>
       
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }
