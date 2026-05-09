@@ -1,17 +1,7 @@
-import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import aboutBanner from '../assets/about_banner.png';
 
 export default function About() {
-  const { t } = useTranslation();
-
-  const corePrinciples = [
-    { title: 'Stability of Mind', desc: 'Sadhachaar creates a consistent mental state that remains unshakeable in the face of external chaos.', icon: '🧠' },
-    { title: 'Alignment', desc: 'Ensuring your internal intent (Thought) matches your speech (Word) and your behavior (Action).', icon: '⚖️' },
-    { title: 'Authentic Duty', desc: 'Understanding your unique role in the ecosystem and executing it with absolute sincerity.', icon: '🎯' },
-    { title: 'Character Building', desc: 'Moving from individual success to collective value through 24 essential qualities.', icon: '💎' },
-  ];
-
   return (
     <div className="overflow-x-hidden">
       {/* Page Header - Full Banner Showcase */}
@@ -28,91 +18,350 @@ export default function About() {
         </div>
       </section>
 
-      {/* Main Content - Narrative Split */}
+      {/* About Us - Introduction */}
       <section className="section-padding bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-20 items-center">
-            <div className="lg:w-1/2">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="relative"
-              >
-                <div className="absolute -top-10 -left-10 w-40 h-40 bg-gold/10 rounded-full blur-3xl" />
-                <h2 className="text-heading-2 mb-8">Bridging Ancient Wisdom & <span className="text-gold">Modern Science</span></h2>
-                <div className="space-y-6 text-muted text-lg leading-relaxed">
-                  <p>
-                    Sadhachaar is not just a philosophy; it is a <strong>Human Operating System (HOS)</strong>. Rooted in the timeless principles of Sanatana Dharma, it has been refined through over two decades of research covering millions of lives across India.
-                  </p>
-                  <p>
-                    Our mission is simple: to create a conflict-free world by upgrading the behavioral software of the human mind. We believe that when an individual is aligned with <strong>Satya</strong> (Truth) and <strong>Dharm</strong> (Duty), they become a pillar of stability for their family and society.
-                  </p>
-                </div>
-                <div className="mt-12 flex gap-8">
-                  <div>
-                    <div className="text-4xl font-heading font-bold text-gold">22+</div>
-                    <div className="text-xs font-bold uppercase tracking-widest text-muted mt-1">Years of Research</div>
-                  </div>
-                  <div className="w-px h-12 bg-black/5" />
-                  <div>
-                    <div className="text-4xl font-heading font-bold text-gold">2Cr+</div>
-                    <div className="text-xs font-bold uppercase tracking-widest text-muted mt-1">Lives Impacted</div>
-                  </div>
-                </div>
-              </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <span className="premium-badge mb-6">About Us</span>
+            <h2 className="text-heading-2 mb-8">SADHACHAAR — <span className="text-gold">An Indigenous Human Happiness System</span></h2>
+            <div className="space-y-6 text-muted text-lg leading-relaxed">
+              <p>
+                SADHACHAAR is a pioneering initiative built on the foundation of <strong>Lok Vidya</strong> (Satya & Dharm) — an indigenous human education system rooted in Indian cultural wisdom. It is designed to create and empower individuals, families, and societies by aligning human thought, action, and purpose through a structured and transformative approach.
+              </p>
+              <p>
+                At its core, SADHACHAAR introduces a <strong>Human Operating System</strong> for life, focused on cultivating a "Loyalty Chain" that leads to sustainable happiness, using a blend of ancient wisdom and modern methodology.
+              </p>
             </div>
-            
-            <div className="lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-6">
-              {corePrinciples.map((principle, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="premium-card group"
-                >
-                  <div className="text-3xl mb-6 group-hover:scale-110 transition-transform">{principle.icon}</div>
-                  <h3 className="text-lg font-bold mb-3">{principle.title}</h3>
-                  <p className="text-sm text-muted leading-relaxed">{principle.desc}</p>
-                </motion.div>
-              ))}
-            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Vision & Mission */}
+      <section className="section-padding bg-ivory">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="premium-card"
+            >
+              <div className="text-4xl mb-6">🎯</div>
+              <h3 className="text-heading-3 mb-6">Our Vision</h3>
+              <p className="text-xl font-heading font-medium text-charcoal mb-4">World Happiness Index — India Rank 1</p>
+              <p className="text-muted leading-relaxed">
+                We envision India becoming the happiest nation in the world, built on strong individuals, stable families, and value-driven communities.
+              </p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="premium-card"
+            >
+              <div className="text-4xl mb-6">🚀</div>
+              <h3 className="text-heading-3 mb-6">Our Mission</h3>
+              <p className="text-muted leading-relaxed mb-4">
+                To train and transform every home toward holistic development by:
+              </p>
+              <ul className="space-y-3 text-muted">
+                <li className="flex items-start gap-3">
+                  <span className="text-gold">✦</span>
+                  Leveraging the profound principles of Satya (Truth) and Dharm (Duty)
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-gold">✦</span>
+                  Reviving Lok Vidya — primary human education
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-gold">✦</span>
+                  Integrating Indian cultural knowledge with structured learning systems
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-gold">✦</span>
+                  Contributing to global Sustainable Development Goals
+                </li>
+              </ul>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* The Founder Section - Immersive */}
-      <section className="section-padding bg-ivory relative overflow-hidden">
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-white rounded-[40px] p-12 lg:p-20 shadow-xl border border-black/5 flex flex-col lg:flex-row gap-16 items-center relative">
-            <div className="lg:w-1/3">
-              <div className="relative group">
-                <div className="absolute -inset-4 bg-gold/20 rounded-[32px] blur-2xl group-hover:bg-gold/30 transition-all duration-700" />
-                <div className="relative w-full aspect-square bg-charcoal rounded-[32px] overflow-hidden">
-                   {/* Placeholder for Founder Image */}
-                   <div className="absolute inset-0 flex items-center justify-center text-white/20 text-4xl font-heading">S</div>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-2/3">
+      {/* Our Promise */}
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <span className="premium-badge mb-6">Our Promise</span>
+            <h2 className="text-heading-2 mb-12">What We Commit To</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { icon: '📈', title: 'Top 10 Ranking', desc: 'Achieve Top 10 ranking in the World Happiness Index by 2044' },
+              { icon: '🏗️', title: 'Scalable Model', desc: 'Build a scalable model that transforms society from the ground up' },
+              { icon: '🌱', title: 'Sustainable Happiness', desc: 'Create a system where happiness is measurable, teachable, and sustainable' },
+            ].map((item, index) => (
               <motion.div
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="premium-card text-center"
               >
-                <span className="premium-badge mb-6">The Visionary</span>
-                <h2 className="text-heading-2 mb-6">Dr. Satya Sadhachaar</h2>
-                <p className="text-lg text-muted italic mb-8 leading-relaxed">
-                  "Happiness is not an achievement; it is a foundation. When your inner operating system is stable, success in the outer world becomes a natural byproduct."
-                </p>
-                <p className="text-muted leading-relaxed">
-                  With a background in both spiritual sciences and behavioral psychology, Dr. Satya has dedicated his life to uncovering the systematic patterns of human behavior that lead to either chaos or harmony.
-                </p>
+                <div className="text-4xl mb-6">{item.icon}</div>
+                <h3 className="text-lg font-bold mb-4">{item.title}</h3>
+                <p className="text-muted text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
-            </div>
+            ))}
           </div>
+        </div>
+      </section>
+
+      {/* The Problem We Address */}
+      <section className="section-padding bg-charcoal text-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="premium-badge bg-gold/20 text-gold border-gold/30 mb-6">The Problem</span>
+            <h2 className="text-heading-2">Why SADHACHAAR Exists</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { icon: '😔', title: 'Mental Health Crisis', desc: 'Increasing stress, anxiety, and dissatisfaction in modern society' },
+              { icon: '🏚️', title: 'Cultural Loss', desc: 'Loss of cultural grounding and human values' },
+              { icon: '🎲', title: 'Unpredictable Outcomes', desc: 'Unpredictable life outcomes despite education and effort' },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
+              >
+                <div className="text-4xl mb-6">{item.icon}</div>
+                <h3 className="text-lg font-bold mb-4 text-white">{item.title}</h3>
+                <p className="text-white/70 text-sm leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          <p className="text-center text-white/60 mt-12 text-lg">
+            India currently ranks low in global happiness metrics, highlighting the need for a fundamental human system upgrade.
+          </p>
+        </div>
+      </section>
+
+      {/* Our Approach - Lok Vidya */}
+      <section className="section-padding bg-ivory">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="premium-badge mb-6">Our Approach</span>
+            <h2 className="text-heading-2 mb-4">Lok Vidya <span className="text-gold">(Satya & Dharm)</span></h2>
+            <p className="text-muted text-lg max-w-3xl mx-auto">
+              SADHACHAAR introduces Lok Vidya, a rediscovered primary education system that bridges ancient Indian wisdom with modern life challenges.
+            </p>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {[
+              { icon: '🌟', title: 'Unique Potential', desc: 'Recognizes every human as unique and exceptional' },
+              { icon: '🔄', title: 'No Comparison', desc: 'Eliminates comparison, competition, and social conditioning' },
+              { icon: '⚖️', title: 'Alignment', desc: 'Focuses on alignment, purpose, and inner stability' },
+              { icon: '🌍', title: 'One Family', desc: 'Revives "Vasudhaiva Kutumbakam" — The world is one family' },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="premium-card"
+              >
+                <div className="text-3xl mb-4">{item.icon}</div>
+                <h3 className="text-md font-bold mb-3">{item.title}</h3>
+                <p className="text-muted text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-3xl p-10 shadow-lg border border-black/5"
+          >
+            <h3 className="text-heading-3 mb-8 text-center">Enabling Individuals to Achieve</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {['Clarity', 'Happiness', 'Purpose', 'Peace of mind'].map((item, index) => (
+                <div key={index} className="text-center">
+                  <div className="w-16 h-16 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">{['💡', '😊', '🎯', '🕉️'][index]}</span>
+                  </div>
+                  <span className="font-bold text-charcoal">{item}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Research & Foundation */}
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="premium-badge mb-6">Research & Foundation</span>
+            <h2 className="text-heading-2">Built on Extensive Long-Term Research</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="premium-card border-l-4 border-gold"
+            >
+              <div className="text-4xl mb-6">🔬</div>
+              <h3 className="text-heading-3 mb-4">Research Phase (Since 2004)</h3>
+              <p className="text-muted mb-6">Studied over 2 Crore individuals across India</p>
+              <ul className="space-y-3 text-muted">
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 bg-gold rounded-full"></span>
+                  16+ States covered
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 bg-gold rounded-full"></span>
+                  42+ Districts studied
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 bg-gold rounded-full"></span>
+                  Urban & rural populations
+                </li>
+              </ul>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="premium-card border-l-4 border-gold"
+            >
+              <div className="text-4xl mb-6">🧪</div>
+              <h3 className="text-heading-3 mb-4">Test Phase (Since 2019)</h3>
+              <p className="text-muted mb-6">5,000+ individuals tested across multiple regions</p>
+              <ul className="space-y-3 text-muted">
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 bg-gold rounded-full"></span>
+                  Applied across diverse cultural environments
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 bg-gold rounded-full"></span>
+                  Tested across social environments
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 bg-gold rounded-full"></span>
+                  Data-backed, real-world system
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Purpose */}
+      <section className="section-padding bg-ivory">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="premium-badge mb-6">Our Purpose</span>
+            <h2 className="text-heading-2">Building a Nation Where</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { icon: '👤', title: 'Every Individual', desc: 'Is aligned with their true potential' },
+              { icon: '👨‍👩‍👧', title: 'Every Family', desc: 'Operates with stability and unity' },
+              { icon: '🏘️', title: 'Every Community', desc: 'Functions with trust and responsibility' },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="premium-card text-center"
+              >
+                <div className="text-5xl mb-6">{item.icon}</div>
+                <h3 className="text-lg font-bold mb-4">{item.title}</h3>
+                <p className="text-muted">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-16 text-center"
+          >
+            <p className="text-2xl font-heading text-charcoal">
+              Ultimately creating a <span className="text-gold">predictable, peaceful, and high-performing</span> society.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Core Belief */}
+      <section className="section-padding bg-white">
+        <div className="max-w-5xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="premium-badge mb-6">Our Core Belief</span>
+            <h2 className="text-3xl md:text-4xl font-heading italic text-charcoal mb-8">
+              "Happiness is not accidental — it can be designed, taught, and sustained."
+            </h2>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Closing Statement */}
+      <section className="section-padding bg-charcoal text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-heading-2 mb-8">SADHACHAAR is not just an initiative —</h2>
+            <p className="text-2xl md:text-3xl font-heading text-white/90 leading-relaxed">
+              it is a systematic transformation model for humanity,<br />
+              starting with India and scaling globally.
+            </p>
+          </motion.div>
         </div>
       </section>
 
