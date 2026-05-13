@@ -121,8 +121,8 @@ export default function Home() {
               {t('hero.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link to="/journey" className="btn-primary group">
-                <span>Start Your Journey</span>
+              <a href="https://forms.gle/pyBuiRvMengcCeLy8" target="_blank" rel="noopener noreferrer" className="btn-primary group">
+                <span>MISSION SADHA</span>
                 <motion.span 
                   animate={{ x: [0, 5, 0] }} 
                   transition={{ repeat: Infinity, duration: 1.5 }}
@@ -130,7 +130,7 @@ export default function Home() {
                 >
                   →
                 </motion.span>
-              </Link>
+              </a>
               <Link to="/about" className="btn-secondary">
                 {t('cta.explore')}
               </Link>
@@ -365,9 +365,9 @@ export default function Home() {
               Join the movement that is rebuilding society from the foundation up. Start your 21-day transformation today.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Link to="/journey" className="btn-primary">
-                Begin Your Journey
-              </Link>
+              <a href="https://forms.gle/pyBuiRvMengcCeLy8" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                MISSION SADHA
+              </a>
               <Link to="/contact" className="btn-secondary">
                 Connect With Us
               </Link>

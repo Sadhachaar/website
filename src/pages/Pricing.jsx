@@ -417,12 +417,12 @@ export default function Pricing() {
                     <p className="font-medium text-charcoal text-sm mt-0.5">{plan.schedule}</p>
                   </div>
                   <div className="text-center py-2 border-b border-subtle">
-                    <span className="text-[10px] uppercase tracking-wider text-lightGray">Monthly</span>
+                    <span className="text-[10px] uppercase tracking-wider text-lightGray">For INDIANS</span>
                     <p className="font-semibold text-gold text-lg">{plan.monthlyCost}</p>
                     <span className="text-[10px] text-lightGray">{plan.tax}</span>
                   </div>
                   <div className="text-center py-2">
-                    <span className="text-[10px] uppercase tracking-wider text-lightGray">Total</span>
+                    <span className="text-[10px] uppercase tracking-wider text-lightGray">For OTHERS</span>
                     <p className="font-semibold text-deepCharcoal">{plan.totalCost}</p>
                     <span className="text-[10px] text-lightGray">{plan.tax}</span>
                   </div>

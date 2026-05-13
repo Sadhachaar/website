@@ -71,11 +71,47 @@ export default function Contact() {
                     </svg>
                   </div>
                   <div>
+                    <h4 className="font-heading font-semibold text-deepCharcoal text-lg mb-1">Educational Headquarters</h4>
+                    <p className="text-lightGray">
+                      VARANASI
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  whileHover={{ x: 4 }}
+                  className="flex items-start gap-5"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.99 1.99 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-heading font-semibold text-deepCharcoal text-lg mb-1">Administration Headquarters</h4>
+                    <p className="text-lightGray">
+                      HYDERABAD
+                    </p>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  whileHover={{ x: 4 }}
+                  className="flex items-start gap-5"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.99 1.99 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div>
                     <h4 className="font-heading font-semibold text-deepCharcoal text-lg mb-1">Main Office</h4>
                     <p className="text-lightGray">
-                      SADHACHAAR Foundation<br />
-                      123 Wisdom Lane, Knowledge City<br />
-                      Varanasi, Uttar Pradesh 221001
+                      Flat 1202, B Block, Aditya Imperial Heights<br />
+                      Hafeezpet, Hyderabad - 500049<br />
+                      Contact: 9490751516
                     </p>
                   </div>
                 </motion.div>
@@ -92,25 +128,7 @@ export default function Contact() {
                   <div>
                     <h4 className="font-heading font-semibold text-deepCharcoal text-lg mb-1">Phone</h4>
                     <p className="text-lightGray">
-                      +91 98765 43210<br />
-                      +91 54321 09876
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  whileHover={{ x: 4 }}
-                  className="flex items-start gap-5"
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-heading font-semibold text-deepCharcoal text-lg mb-1">Email</h4>
-                    <p className="text-lightGray">
-                      info@sadhachaar.org
+                      9490751516
                     </p>
                   </div>
                 </motion.div>

@@ -101,10 +101,10 @@ export default function OurVision() {
               ))}
 
               {/* Flowing Energy Particles */}
-              {[0, 2, 4].map((delay, i) => (
+              {[0, 1, 2, 3, 4, 5].map((delay, i) => (
                 <motion.circle key={i} r="2.5" fill="#D4AF37" filter="url(#bloom)">
                   <animateMotion 
-                    dur={`${6 + i}s`} 
+                    dur={`${6 + (i % 3)}s`} 
                     repeatCount="indefinite" 
                     begin={`${delay}s`}
                     path="M 100,225 A 400,180 0 1,1 900,225 A 400,180 0 1,1 100,225" 
@@ -126,7 +126,7 @@ export default function OurVision() {
                     cx="500" cy="225" r="75"
                     fill="none"
                     stroke="#D4AF37"
-                    strokeWidth="1"
+                    strokeWidth="2"
                     strokeDasharray="5 15"
                     animate={{ rotate: 360 }}
                     transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
@@ -136,14 +136,12 @@ export default function OurVision() {
 
               {/* Orbital Nodes - Redesigned as Premium Glass Pointers */}
               {[
-                { label: 'Humanity', icon: '👤', angle: 270, x: 500, y: 45 },
-                { label: 'Community', icon: '👥', angle: 315, x: 782, y: 95 },
-                { label: 'Organisation', icon: '🏢', angle: 45, x: 782, y: 355 },
-                { label: 'Relationship', icon: '❤️', angle: 90, x: 500, y: 405 },
-                { label: 'Society', icon: '🌍', angle: 135, x: 218, y: 355 },
-                { label: 'Start with Family', icon: '🏠', angle: 225, x: 218, y: 95 },
-                { label: 'SUSTAINABILITY', icon: '♻️', angle: 0, x: 900, y: 225, special: true },
-                { label: 'DEVELOPMENT', icon: '📈', angle: 180, x: 100, y: 225, special: true }
+                { label: 'Family', icon: '🏠', angle: 150, highlight: true },
+                { label: 'Relationship', icon: '❤️', angle: 180 },
+                { label: 'Community', icon: '👥', angle: 210 },
+                { label: 'Society', icon: '🌍', angle: 330 },
+                { label: 'Organisation', icon: '🏢', angle: 0 },
+                { label: 'Humanity', icon: '👤', angle: 30 }
               ].map((node, i) => (
                 <motion.g
                   key={i}
@@ -152,47 +150,83 @@ export default function OurVision() {
                   transition={{ delay: 1 + (i * 0.1), type: "spring" }}
                   className="cursor-pointer"
                 >
-                  {/* Node Background */}
-                  <circle cx={node.x} cy={node.y} r="22" fill="white" shadow-md />
-                  <circle cx={node.x} cy={node.y} r="22" fill="none" stroke="#B38B3F" strokeWidth="0.5" opacity="0.3" />
-                  
-                  {/* Icon */}
-                  <text x={node.x} y={node.y + 7} textAnchor="middle" fontSize={node.special ? "18" : "22"}>
-                    {node.icon}
-                  </text>
+                  {(() => {
+                    const cx = 500, cy = 225, r = 400;
+                    const rad = node.angle * Math.PI / 180;
+                    const x = cx + r * Math.cos(rad);
+                    const y = cy + r * Math.sin(rad);
+                    return (
+                      <>
+                        {/* Node Background */}
+                        <circle cx={x} cy={y} r={node.highlight ? "28" : "22"} fill={node.highlight ? "#D4AF37" : "white"} shadow-md />
+                        <circle cx={x} cy={y} r={node.highlight ? "28" : "22"} fill="none" stroke="#B38B3F" strokeWidth={node.highlight ? "2" : "0.5"} opacity="0.3" />
+                        
+                        {/* Icon */}
+                        <text x={x} y={y + 7} textAnchor="middle" fontSize={node.highlight ? "26" : "22"} fill={node.highlight ? "white" : "inherit"}>
+                          {node.icon}
+                        </text>
 
-                  {/* Label with Glass Effect */}
-                  <g>
-                    <rect 
-                      x={node.x - 50} 
-                      y={node.y + (node.y > 225 ? 30 : -50)} 
-                      width="100" 
-                      height="20" 
-                      rx="10" 
-                      fill="white" 
-                      opacity="0.8" 
-                    />
-                    <text 
-                      x={node.x} 
-                      y={node.y + (node.y > 225 ? 44 : -36)} 
-                      textAnchor="middle" 
-                      fill="#3A3A3A" 
-                      className={`font-bold tracking-widest uppercase ${node.special ? 'text-gold-dark' : 'text-charcoal'}`}
-                      style={{ fontSize: '9px' }}
-                    >
-                      {node.label}
-                    </text>
-                  </g>
+                        {/* Label with Glass Effect */}
+                        <g>
+                          <rect 
+                            x={x - 50} 
+                            y={y > 225 ? y + 30 : y - 50} 
+                            width="100" 
+                            height="20" 
+                            rx="10" 
+                            fill={node.highlight ? "#D4AF37" : "white"} 
+                            opacity="0.9" 
+                          />
+                          <text 
+                            x={x} 
+                            y={y > 225 ? y + 42 : y - 38} 
+                            textAnchor="middle" 
+                            fill={node.highlight ? "white" : "#3A3A3A"} 
+                            className="font-bold tracking-widest uppercase"
+                            style={{ fontSize: node.highlight ? '9px' : '9px' }}
+                          >
+                            {node.label}
+                          </text>
+                        </g>
 
-                  {/* Hover Pulse */}
-                  <motion.circle
-                    cx={node.x} cy={node.y} r="22"
-                    fill="none"
-                    stroke="#B38B3F"
-                    strokeWidth="1"
-                    animate={{ scale: [1, 1.4], opacity: [0.3, 0] }}
-                    transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
-                  />
+                        {/* Strong Ripple Effect for Family */}
+                        {node.highlight && (
+                          <>
+                            <motion.circle
+                              cx={x} cy={y} r="28"
+                              fill="none"
+                              stroke="#D4AF37"
+                              strokeWidth="2"
+                              initial={{ scale: 1, opacity: 0.8 }}
+                              animate={{ scale: [1, 1.5, 1.8, 2.2], opacity: [0.8, 0.6, 0.4, 0] }}
+                              transition={{ repeat: Infinity, duration: 1.5, ease: "easeOut" }}
+                            />
+                            <motion.circle
+                              cx={x} cy={y} r="28"
+                              fill="none"
+                              stroke="#D4AF37"
+                              strokeWidth="2"
+                              initial={{ scale: 1, opacity: 0.8 }}
+                              animate={{ scale: [1, 1.5, 1.8, 2.2], opacity: [0.8, 0.6, 0.4, 0] }}
+                              transition={{ repeat: Infinity, duration: 1.5, delay: 0.5, ease: "easeOut" }}
+                            />
+                          </>
+                        )}
+
+                        {/* Regular Hover Pulse */}
+                        {!node.highlight && (
+                          <motion.circle
+                            cx={x} cy={y} r="22"
+                            fill="none"
+                            stroke="#B38B3F"
+                            strokeWidth="1"
+                            animate={{ scale: [1, 1.4], opacity: [0.3, 0] }}
+                            transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
+                          />
+                        )}
+                      </>
+                    );
+                  })()}
                 </motion.g>
               ))}
 
@@ -204,7 +238,15 @@ export default function OurVision() {
                   fill="#B38B3F"
                   style={{ fontSize: '26px', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}
                 >
-                  CARE
+                  INSPIRE
+                </text>
+                <text
+                  x="385" y="255"
+                  textAnchor="end"
+                  fill="#B38B3F"
+                  style={{ fontSize: '12px', opacity: 0.7 }}
+                >
+                  DEVELOPMENT
                 </text>
                 
                 <text
@@ -213,7 +255,15 @@ export default function OurVision() {
                   fill="#B38B3F"
                   style={{ fontSize: '26px', filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}
                 >
-                  INSPIRE
+                  CARE
+                </text>
+                <text
+                  x="615" y="255"
+                  textAnchor="start"
+                  fill="#B38B3F"
+                  style={{ fontSize: '12px', opacity: 0.7 }}
+                >
+                  SUSTAINABILITY
                 </text>
               </g>
             </svg>
@@ -277,8 +327,8 @@ export default function OurVision() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <span className="inline-block text-xs tracking-[0.25em] uppercase text-gold-dark mb-6 block">
-                Eligibility
+              <span className="inline-block text-xs tracking-[0.25em] uppercase text-gold-dark mb-4 block">
+                ELIGIBILITY-URGENCY
               </span>
               
               <div className="space-y-3">
@@ -367,7 +417,7 @@ export default function OurVision() {
               href="/pricing" 
               className="inline-block px-8 py-4 bg-gold text-charcoal font-medium rounded-xl hover:bg-gold-dark transition-all"
             >
-              Explore Programs
+              Explore Plans
             </a>
           </motion.div>
         </div>

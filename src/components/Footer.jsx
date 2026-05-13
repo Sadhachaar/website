@@ -101,7 +101,7 @@ export default function Footer() {
                   { name: 'Home', path: '/' },
                   { name: 'Our Vision', path: '/our-vision' },
                   { name: 'About Us', path: '/about' },
-                  { name: 'The Journey', path: '/journey' }
+                  { name: 'Pricing', path: '/pricing' }
                 ].map((link) => (
                   <li key={link.name}>
                     <Link 
@@ -116,16 +116,15 @@ export default function Footer() {
             </div>
 
             <div className="space-y-6">
-              <h4 className="font-heading text-sm font-medium text-white tracking-[0.2em] uppercase">Stations</h4>
+              <h4 className="font-heading text-sm font-medium text-white tracking-[0.2em] uppercase">Launch Stations</h4>
               <ul className="space-y-4">
-                {['Family', 'Workspace', 'Community', 'Society'].map((station) => (
+                {['Family', 'Relations', 'Community', 'Society', 'Workspace', 'Humanity'].map((station) => (
                   <li key={station}>
-                    <Link 
-                      to="/launch-stations" 
-                      className="text-sm text-silver/50 hover:text-gold hover:translate-x-1 inline-block transition-all duration-300"
+                    <span 
+                      className="text-sm text-silver/50"
                     >
                       {station}
-                    </Link>
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -155,7 +154,7 @@ export default function Footer() {
         <div className="mt-20 pt-10 border-t border-white/5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="text-[11px] font-medium text-silver/30 tracking-[0.3em] uppercase text-center md:text-left">
-              &copy; {currentYear} Sadhachaar Foundation. All rights reserved.
+              &copy; {currentYear} Sadhachaar Consulting Services. All rights reserved.
             </div>
             
             <div className="flex gap-10">
