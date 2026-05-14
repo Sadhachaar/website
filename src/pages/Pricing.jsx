@@ -1,8 +1,26 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Pricing() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [selectedLanguage, setSelectedLanguage] = useState(null);
+
+  const handleSelectPlan = (plan) => {
+    setSelectedPlan(plan);
+    setShowModal(true);
+  };
+
+  const handleProceed = () => {
+    if (selectedLanguage) {
+      setShowModal(false);
+      navigate('/plan-preview', { state: { plan: selectedPlan, language: selectedLanguage } });
+    }
+  };
 
   const programCoverage = [
     {
@@ -428,11 +446,14 @@ export default function Pricing() {
                   </div>
                 </div>
 
-                <button className={`w-full py-2.5 rounded-xl font-medium text-sm transition-all duration-300 ${
-                  plan.badge
-                    ? 'bg-gold text-white hover:bg-gold-dark'
-                    : 'bg-charcoal text-white hover:bg-deepCharcoal'
-                }`}>
+                <button 
+                  onClick={() => handleSelectPlan(plan)}
+                  className={`w-full py-2.5 rounded-xl font-medium text-sm transition-all duration-300 ${
+                    plan.badge
+                      ? 'bg-gold text-white hover:bg-gold-dark'
+                      : 'bg-charcoal text-white hover:bg-deepCharcoal'
+                  }`}
+                >
                   Select Plan
                 </button>
 
@@ -444,6 +465,55 @@ export default function Pricing() {
           </div>
         </div>
       </section>
+
+      {/* Language Selection Modal */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setShowModal(false)} />
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="relative bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl"
+          >
+            <h3 className="text-2xl font-heading font-bold text-deepCharcoal text-center mb-6">
+              Choose Your Language
+            </h3>
+            
+            <div className="space-y-3 mb-8">
+              {[
+                { code: 'en', label: 'English', flag: '🇬🇧', file: 'ENG-SADHACHAAR-7.pdf' },
+                { code: 'hi', label: 'हिन्दी (Hindi)', flag: '🇮🇳', file: 'HIN-SADHACHAAR-7.pdf' },
+                { code: 'te', label: 'తెలుగు (Telugu)', flag: '🇮🇳', file: 'TEL-SADHACHAAR-7.pdf' }
+              ].map((lang) => (
+                <button
+                  key={lang.code}
+                  onClick={() => setSelectedLanguage(lang)}
+                  className={`w-full p-4 rounded-xl border-2 flex items-center gap-4 transition-all ${
+                    selectedLanguage?.code === lang.code
+                      ? 'border-gold bg-gold/5'
+                      : 'border-subtle hover:border-gold/50'
+                  }`}
+                >
+                  <span className="text-2xl">{lang.flag}</span>
+                  <span className="font-medium text-charcoal">{lang.label}</span>
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={handleProceed}
+              disabled={!selectedLanguage}
+              className={`w-full py-3 rounded-xl font-semibold text-sm transition-all ${
+                selectedLanguage
+                  ? 'bg-gold text-white hover:bg-gold-dark'
+                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              }`}
+            >
+              Proceed
+            </button>
+          </motion.div>
+        </div>
+      )}
 
       {/* Certification Section - Elegant Finale */}
       <section className="py-24 bg-white relative">
