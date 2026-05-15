@@ -187,6 +187,17 @@ export default function OurVision() {
                           >
                             {node.label}
                           </text>
+                          {node.highlight && (
+                            <text 
+                              x={x} 
+                              y="496" 
+                              textAnchor="middle" 
+                              fill="#3A3A3A" 
+                              style={{ fontSize: '14px', fontWeight: 'bold' }}
+                            >
+                              STARTING WITH
+                            </text>
+                          )}
                         </g>
 
                         {/* Strong Ripple Effect for Family */}

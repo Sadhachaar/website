@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -10,11 +11,32 @@ export default function Contact() {
     phone: '',
     message: ''
   });
+  const [isSending, setIsSending] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Thank you! We will contact you soon.');
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    setIsSending(true);
+    
+    try {
+      await emailjs.send(
+        'service_12345678',
+        'template_12345678',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          to_email: 'akhi.somu@gmail.com'
+        },
+        'YOUR_PUBLIC_KEY'
+      );
+      alert('Thank you! We will contact you soon.');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    } catch (error) {
+      alert('Failed to send message. Please try again.');
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -150,6 +172,23 @@ export default function Contact() {
                   </div>
                 </motion.div>
 
+                <motion.div 
+                  whileHover={{ x: 4 }}
+                  className="flex items-start gap-5"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-gold/10 flex items-center justify-center flex-shrink-0">
+                    <svg className="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="font-heading font-semibold text-deepCharcoal text-lg mb-1">GST Number</h4>
+                    <p className="text-lightGray">
+                      36AKLPR4043F1Z2
+                    </p>
+                  </div>
+                </motion.div>
+
                 {/* Social Connection */}
                 <div className="pt-8 border-t border-gold/10">
                   <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gold mb-6">Follow our Journey</h4>
@@ -247,8 +286,8 @@ export default function Contact() {
                       placeholder="How can we help you?"
                     />
                   </div>
-                  <button type="submit" className="btn-primary w-full text-lg py-4">
-                    Send Message
+                  <button type="submit" disabled={isSending} className="btn-primary w-full text-lg py-4 disabled:opacity-50">
+                    {isSending ? 'Sending...' : 'Send Message'}
                   </button>
                 </div>
 

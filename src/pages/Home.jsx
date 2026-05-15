@@ -218,7 +218,7 @@ export default function Home() {
               <p className="text-white/60 text-lg leading-relaxed mb-8">
                 Since 2004, we have meticulously mapped the human condition across India, creating a data-driven path to collective happiness.
               </p>
-              <Link to="/journey" className="text-gold font-bold tracking-widest uppercase text-xs hover:text-gold-light transition-colors inline-flex items-center gap-2 group">
+              <Link to="/about" className="text-gold font-bold tracking-widest uppercase text-xs hover:text-gold-light transition-colors inline-flex items-center gap-2 group">
                 View Full Journey <span className="group-hover:translate-x-2 transition-transform">→</span>
               </Link>
             </div>

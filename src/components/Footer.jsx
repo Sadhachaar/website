@@ -91,6 +91,10 @@ export default function Footer() {
               ))}
             </div>
 
+            <div className="text-sm text-silver/50 tracking-wide">
+              GSTIN: 36AKLPR4043F1Z2
+            </div>
+
             </div>
 
           <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-12 lg:pl-12">
@@ -101,6 +105,8 @@ export default function Footer() {
                   { name: 'Home', path: '/' },
                   { name: 'Our Vision', path: '/our-vision' },
                   { name: 'About Us', path: '/about' },
+                  { name: 'Team', path: '/team' },
+                  { name: 'Gallery', path: '/gallery' },
                   { name: 'Pricing', path: '/pricing' }
                 ].map((link) => (
                   <li key={link.name}>
@@ -153,8 +159,10 @@ export default function Footer() {
 
         <div className="mt-20 pt-10 border-t border-white/5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="text-[11px] font-medium text-silver/30 tracking-[0.3em] uppercase text-center md:text-left">
-              &copy; {currentYear} Sadhachaar Consulting Services. All rights reserved.
+            <div className="text-center md:text-left">
+              <div className="text-[11px] font-medium text-silver/30 tracking-[0.3em] uppercase">
+                &copy; {currentYear} Sadhachaar Consulting Services. All rights reserved.
+              </div>
             </div>
             
             <div className="flex gap-10">

@@ -8,6 +8,7 @@ export default function PlanPreview() {
   const location = useLocation();
   const navigate = useNavigate();
   const [isReady, setIsReady] = useState(false);
+  const [agreed, setAgreed] = useState(false);
 
   const { plan, language } = location.state || {};
 
@@ -19,6 +20,21 @@ export default function PlanPreview() {
 
   const config = languageConfig[language?.code] || languageConfig.en;
   const pdfUrl = `/${config.file}`;
+
+const agreementMessages = {
+    en: "You're about to begin a personalized journey aligned with the values of Satya (Being the Word) and Dharm (Authentic Role of Duty) through Mission Sadha and Sadhachaar. When you select your plan, we'll guide you to a quick form in our dedicated space—crafted just for you—so we can tailor your experience and set you on a meaningful path.",
+    hi: "आप मिशन साधा और साधाचार के माध्यम से सत्य (शब्द का अस्तित्व) और धर्म (कर्तव्य की प्रामाणिक भूमिका) के मूल्यों के अनुरूप एक व्यक्तिगत यात्रा शुरू करने वाले हैं। जब आप अपनी योजना का चयन करेंगे, तो हम आपको हमारे विशेष स्थान पर एक त्वरित फॉर्म भरने के लिए निर्देशित करेंगे - जो विशेष रूप से आपके लिए बनाया गया है - ताकि हम आपके अनुभव को अनुकूलित कर सकें और आपको एक सार्थक मार्ग पर अग्रसर कर सकें।",
+    te: "మిషన్ సాధ మరియు సాధాచార్ ద్వారా మీరు సత్యం (వాక్యంగా ఉండటం) మరియు ధర్మం (విధి యొక్క ప్రామాణిక పాత్ర) అనే విలువలకు అనుగుణంగా ఒక వ్యక్తిగత ప్రయాణాన్ని ప్రారంభించబోతున్నారు. మీరు మీ ప్రణాళికను ఎంచుకున్నప్పుడు, మీ కోసమే ప్రత్యేకంగా రూపొందించిన మా ప్రత్యేక ప్రదేశంలోని ఒక చిన్న ఫారమ్‌కు మేము మిమ్మల్ని మార్గనిర్దేశం చేస్తాము, తద్వారా మేము మీ అనుభవాన్ని తీర్చిదిద్ది, మిమ్మల్ని ఒక అర్థవంతమైన మార్గంలో నడిపించగలము."
+  };
+
+  const agreementLabels = {
+    en: "I agree to proceed with this plan",
+    hi: "मैं इस योजना के साथ आगे बढ़ने के लिए सहमत हूँ।",
+    te: "ఈ ప్రణాళికతో ముందుకు సాగడానికి నేను అంగీకరిస్తున్నాను"
+  };
+
+  const message = agreementMessages[language?.code] || agreementMessages.en;
+  const agreeLabel = agreementLabels[language?.code] || agreementLabels.en;
 
   useEffect(() => {
     if (!plan || !language) {
@@ -105,16 +121,45 @@ export default function PlanPreview() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mt-8 flex justify-center"
+          className="mt-8"
         >
-          <a
-            href="https://forms.gle/pyBuiRvMengcCeLy8"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-10 py-4 bg-gold text-white text-lg font-semibold rounded-full hover:bg-gold-dark transition-all duration-300 shadow-lg hover:shadow-xl inline-block"
-          >
-            Proceed Plan
-          </a>
+          <div className="bg-white rounded-2xl p-6 border border-subtle max-w-2xl mx-auto mb-6">
+            <p className="text-charcoal text-sm leading-relaxed mb-4">
+              {message}
+            </p>
+            <label className="flex items-center gap-3 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+                className="w-5 h-5 rounded border-gold/30 text-gold focus:ring-gold cursor-pointer"
+              />
+              <span className="text-sm font-medium text-charcoal">
+                {agreeLabel}
+              </span>
+            </label>
+          </div>
+
+          <div className="flex justify-center">
+            <a
+              href={agreed ? "https://forms.gle/pyBuiRvMengcCeLy8" : "#"}
+              onClick={(e) => {
+                if (!agreed) {
+                  e.preventDefault();
+                  alert('Please agree to proceed');
+                }
+              }}
+              target={agreed ? "_blank" : "_self"}
+              rel="noopener noreferrer"
+              className={`px-10 py-4 text-lg font-semibold rounded-full transition-all duration-300 shadow-lg inline-block ${
+                agreed 
+                  ? 'bg-gold text-white hover:bg-gold-dark hover:shadow-xl' 
+                  : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+              }`}
+            >
+              Proceed Plan
+            </a>
+          </div>
         </motion.div>
       </div>
     </div>

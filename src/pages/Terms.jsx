@@ -69,6 +69,11 @@ export default function Terms() {
               <h2 className="text-xl font-heading text-charcoal">7. Contact</h2>
               <p>If you have any questions about these Terms of Service, please contact us at info@sadhachaar.org.</p>
             </div>
+
+            <div className="space-y-4">
+              <h2 className="text-xl font-heading text-charcoal">8. GST Information</h2>
+              <p>GST Registration Number: 36AKLPR4043F1Z2</p>
+            </div>
           </motion.div>
         </div>
       </section>

@@ -10,6 +10,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import Terms from './pages/Terms';
 import Ethics from './pages/Ethics';
 import PlanPreview from './pages/PlanPreview';
+import Team from './pages/Team';
+import Gallery from './pages/Gallery';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -34,6 +36,8 @@ function App() {
           <Route path="terms" element={<Terms />} />
           <Route path="ethics" element={<Ethics />} />
           <Route path="plan-preview" element={<PlanPreview />} />
+          <Route path="team" element={<Team />} />
+          <Route path="gallery" element={<Gallery />} />
         </Route>
       </Routes>
     </BrowserRouter>

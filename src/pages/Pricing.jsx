@@ -366,6 +366,12 @@ export default function Pricing() {
                   </div>
                 </div>
 
+                <div className="mt-4 pt-4 border-t border-white/10">
+                  <p className="text-[10px] text-silver/60 text-center">
+                    GSTIN: 36AKLPR4043F1Z2
+                  </p>
+                </div>
+
                 {/* Corner decorations */}
                 <div className="absolute top-4 right-4 w-4 h-4 border-t border-r border-white/20 rounded-tr-lg" />
                 <div className="absolute bottom-4 left-4 w-4 h-4 border-b border-l border-white/20 rounded-bl-lg" />
@@ -462,6 +468,12 @@ export default function Pricing() {
                 <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-gold/20 rounded-bl-xl" />
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-sm text-lightGray">
+              <span className="font-medium text-charcoal">GSTIN:</span> 36AKLPR4043F1Z2
+            </p>
           </div>
         </div>
       </section>

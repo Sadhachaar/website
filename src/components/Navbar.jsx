@@ -26,6 +26,8 @@ export default function Navbar() {
     { path: '/', label: t('nav.home') },
     { path: '/our-vision', label: 'Vision' },
     { path: '/about', label: t('nav.about') },
+    { path: '/team', label: 'Team' },
+    { path: '/gallery', label: 'Gallery' },
     { path: '/pricing', label: t('nav.pricing') },
     { path: '/contact', label: t('nav.contact') }
   ];

@@ -64,6 +64,11 @@ export default function PrivacyPolicy() {
               <h2 className="text-xl font-heading text-charcoal">6. Changes to This Policy</h2>
               <p>We may update this privacy policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
             </div>
+
+            <div className="space-y-4">
+              <h2 className="text-xl font-heading text-charcoal">7. GST Information</h2>
+              <p>GST Registration Number: 36AKLPR4043F1Z2</p>
+            </div>
           </motion.div>
         </div>
       </section>
