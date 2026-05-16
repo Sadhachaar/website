@@ -167,7 +167,7 @@ export default function Contact() {
                   <div>
                     <h4 className="font-heading font-semibold text-deepCharcoal text-lg mb-1">Website</h4>
                     <p className="text-lightGray">
-                      www.sadhachaar.org
+                      www.missionsadha.org
                     </p>
                   </div>
                 </motion.div>
