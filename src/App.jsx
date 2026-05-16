@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Layout from './layouts/Layout';
 import Home from './pages/Home';
@@ -12,6 +12,9 @@ import Ethics from './pages/Ethics';
 import PlanPreview from './pages/PlanPreview';
 import Team from './pages/Team';
 import Gallery from './pages/Gallery';
+import NotFound from './pages/NotFound';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import OfflineIndicator from './components/OfflineIndicator';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -23,24 +26,28 @@ function ScrollToTop() {
 
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="pricing" element={<Pricing />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="our-vision" element={<OurVision />} />
-          <Route path="privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="terms" element={<Terms />} />
-          <Route path="ethics" element={<Ethics />} />
-          <Route path="plan-preview" element={<PlanPreview />} />
-          <Route path="team" element={<Team />} />
-          <Route path="gallery" element={<Gallery />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <HashRouter>
+        <OfflineIndicator />
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="pricing" element={<Pricing />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="our-vision" element={<OurVision />} />
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="terms" element={<Terms />} />
+            <Route path="ethics" element={<Ethics />} />
+            <Route path="plan-preview" element={<PlanPreview />} />
+            <Route path="team" element={<Team />} />
+            <Route path="gallery" element={<Gallery />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </HashRouter>
+    </ErrorBoundary>
   );
 }
 

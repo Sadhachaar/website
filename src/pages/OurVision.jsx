@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import logoMark from '../assets/logo_mark.jpg';
 
 export default function OurVision() {
@@ -424,12 +425,12 @@ export default function OurVision() {
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
               Be part of the movement to create a happier, more balanced world through Lok Vidya.
             </p>
-            <a 
-              href="/pricing" 
+            <Link 
+              to="/pricing" 
               className="inline-block px-8 py-4 bg-gold text-charcoal font-medium rounded-xl hover:bg-gold-dark transition-all"
             >
               Explore Plans
-            </a>
+            </Link>
           </motion.div>
         </div>
       </section>
