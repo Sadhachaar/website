@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const { t } = useTranslation();
@@ -12,27 +11,38 @@ export default function Contact() {
     message: ''
   });
   const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSending(true);
+    setStatus(null);
     
     try {
-      await emailjs.send(
-        'service_12345678',
-        'template_12345678',
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-          to_email: 'akhi.somu@gmail.com'
+      const response = await fetch('https://formsubmit.co/akhi.somu@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        'YOUR_PUBLIC_KEY'
-      );
-      alert('Thank you! We will contact you soon.');
-      setFormData({ name: '', email: '', phone: '', message: '' });
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message
+        })
+      });
+      
+      if (response.ok) {
+        setStatus('success');
+        alert('Thank you! We will contact you soon.');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        setStatus('error');
+        alert('Failed to send message. Please try again.');
+      }
     } catch (error) {
+      setStatus('error');
       alert('Failed to send message. Please try again.');
     } finally {
       setIsSending(false);
@@ -238,7 +248,10 @@ export default function Contact() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <form onSubmit={handleSubmit} className="relative bg-ivory rounded-2xl p-8 border border-gold-muted/20">
+              <form onSubmit={handleSubmit} action="https://formsubmit.co/akhi.somu@gmail.com" method="POST" className="relative bg-ivory rounded-2xl p-8 border border-gold-muted/20">
+                <input type="hidden" name="_subject" value="New Contact Form Submission - Sadhachaar" />
+                <input type="hidden" name="_next" value={window.location.href} />
+                <input type="text" name="_honey" style={{ display: 'none' }} />
                 <h2 className="text-2xl font-heading font-semibold text-deepCharcoal mb-6">
                   Send a Message
                 </h2>
