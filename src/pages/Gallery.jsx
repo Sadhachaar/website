@@ -37,9 +37,14 @@ export default function Gallery() {
             <p className="text-muted text-lg leading-relaxed mb-8">
               We are assembling a rich visual tapestry of our projects, field research, and milestone events to share with the world.
             </p>
+            <div className="mt-8 bg-gold/10 px-8 py-5 rounded-2xl shadow-lg border border-gold/30">
+              <p className="text-charcoal font-medium leading-relaxed">
+                <span className="text-gold-dark font-bold">A small update:</span> we are taking 7 more days to finalize this gallery. Our team and the individuals featured in these moments are reviewing and granting their approvals, so every image we share is published with their consent. Thank you for your patience.
+              </p>
+            </div>
             <div className="mt-8">
-              <p className="text-charcoal font-medium mb-4">Launch Date: 15th Aug 2026, 11:59 PM</p>
-              <CountdownTimer targetDate="August 15, 2026 23:59:00" />
+              <p className="text-charcoal font-medium mb-4">Updated Launch Date: 22nd Aug 2026, 11:59 PM</p>
+              <CountdownTimer targetDate="August 22, 2026 23:59:00" />
             </div>
             <div className="mt-8 bg-white px-8 py-4 rounded-2xl shadow-lg border border-gold/20">
               <p className="text-charcoal font-medium">
