@@ -1,56 +1,89 @@
-import { motion } from 'framer-motion';
-import aboutBanner from '../assets/about_banner.png';
-import CountdownTimer from '../components/CountdownTimer';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const galleryCollections = [
+  { id: 'm2020', step: '01', title: 'M2020', description: 'The beginnings of our research, learning, and human-development journey.', folderId: '1XuUyd_4ewMyoAumSjs1jJ9LCEjGCYGao' },
+  { id: 'suvarna-avirbhha', step: '02', title: 'Mission Suvarna Avirbha', description: 'Moments from a mission shaped by transformation, shared purpose, and possibility.', folderId: '18evkzRNG7tt6KlU_gCxjdGUlqQuFNh7g' },
+  { id: 'mission-sadha', step: '03', title: 'Mission Sadha Co SADHACHAAR', description: 'The continuing story of SADHACHAAR and its commitment to SATYA and DHARM.', folderId: '1efnxkNTapxelGCwPPSw0QrHNz9pLDxdd' }
+];
 
 export default function Gallery() {
+  const [activeCollection, setActiveCollection] = useState(galleryCollections[0]);
+  const folderUrl = `https://drive.google.com/drive/folders/${activeCollection.folderId}`;
+  const embedUrl = `https://drive.google.com/embeddedfolderview?id=${activeCollection.folderId}#grid`;
+
   return (
-    <div className="overflow-x-hidden">
-      <section className="relative overflow-hidden bg-white">
-        <div className="w-full h-auto">
-          <motion.img 
-            src={aboutBanner} 
-            alt="Sadhachaar Gallery" 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2 }}
-            className="w-full h-full object-contain"
-          />
+    <div className="overflow-x-hidden bg-ivory">
+      <section className="section-padding pb-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(179,139,63,0.12),_transparent_52%)]" />
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="max-w-4xl mx-auto text-center relative">
+          <span className="premium-badge mb-6">Visual Archive</span>
+          <h1 className="text-heading-2 mb-5">A Journey Captured in <span className="text-gold italic">Purpose</span></h1>
+          <p className="text-gold font-semibold text-lg mb-6">22 Years of Research, Relationships, and Transformation.</p>
+          <p className="text-muted text-lg leading-relaxed">Explore the defining moments of our journey across M2020, Mission Suvarna Avirbha, and Mission Sadha Co SADHACHAAR.</p>
+        </motion.div>
+      </section>
+
+      <section className="pb-24 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-10">
+            {galleryCollections.map((collection) => {
+              const isActive = activeCollection.id === collection.id;
+              return <button key={collection.id} type="button" onClick={() => setActiveCollection(collection)} className={`text-left rounded-2xl border p-5 transition-all duration-300 ${isActive ? 'bg-charcoal border-charcoal text-white shadow-premium' : 'bg-white border-gold/15 text-charcoal hover:border-gold/60 hover:-translate-y-1'}`} aria-pressed={isActive}>
+                <span className={`text-xs font-bold tracking-[0.25em] ${isActive ? 'text-gold-light' : 'text-gold-dark'}`}>{collection.step}</span>
+                <span className="block mt-2 font-heading text-xl font-semibold leading-snug">{collection.title}</span>
+              </button>;
+            })}
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div key={activeCollection.id} initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -14 }} transition={{ duration: 0.3 }} className="premium-card p-0 overflow-hidden">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 p-6 md:p-8 border-b border-gold/10 bg-white">
+                <div>
+                  <span className="text-xs font-bold tracking-[0.22em] text-gold-dark uppercase">Chapter {activeCollection.step}</span>
+                  <h2 className="text-2xl md:text-3xl text-charcoal mt-2">{activeCollection.title}</h2>
+                  <p className="text-muted text-base mt-2 max-w-2xl">{activeCollection.description}</p>
+                </div>
+                <a href={folderUrl} target="_blank" rel="noopener noreferrer" className="btn-secondary shrink-0">Open in Drive <span aria-hidden="true" className="ml-2">↗</span></a>
+              </div>
+              <div className="bg-softWhite p-2 md:p-4">
+                <iframe key={embedUrl} src={embedUrl} title={`${activeCollection.title} gallery`} className="w-full h-[560px] md:h-[680px] bg-white rounded-xl border-0" loading="lazy" allow="fullscreen" />
+              </div>
+            </motion.div>
+          </AnimatePresence>
+          <p className="text-center text-muted text-sm mt-8">Gallery content is maintained in Google Drive and updates automatically when new media is added to these folders.</p>
         </div>
       </section>
 
-      <section className="section-padding bg-ivory">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-24 bg-deepCharcoal text-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-midnight via-deepNavy to-midnight" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gold/5 rounded-full blur-3xl" />
+        </div>
+
+        <div className="max-w-4xl mx-auto px-6 text-center relative">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <span className="premium-badge mb-6">Coming Soon</span>
-            <h2 className="text-heading-2 mb-4">A Journey Captured in Purpose</h2>
-            <p className="text-gold font-semibold text-lg mb-6">Documenting 22 Years, 16 States, and Countless Transformations.</p>
-            <p className="text-muted text-lg leading-relaxed mb-8">
-              Every breakthrough has a face. Every piece of research has a story.
+            <span className="inline-block text-xs tracking-[0.25em] uppercase text-gold-muted mb-6">
+              Begin Your Journey
+            </span>
+            <h2 className="text-4xl md:text-5xl font-heading font-semibold mb-6">
+              Join the Transformation
+            </h2>
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+              Be part of the movement to create a happier, more balanced world through Lok Vidya.
             </p>
-            <p className="text-muted text-lg leading-relaxed mb-8">
-              This gallery will serve as a living archive of our journey since 2004. Soon, you will be able to explore visual narratives of our pilot team implementations, our deep dive into community livelihood metrics, and the moments of profound connection that define our work.
-            </p>
-            <p className="text-muted text-lg leading-relaxed mb-8">
-              We are assembling a rich visual tapestry of our projects, field research, and milestone events to share with the world.
-            </p>
-            <div className="mt-8 bg-gold/10 px-8 py-5 rounded-2xl shadow-lg border border-gold/30">
-              <p className="text-charcoal font-medium leading-relaxed">
-                <span className="text-gold-dark font-bold">A small update:</span> we are taking 7 more days to finalize this gallery. Our team and the individuals featured in these moments are reviewing and granting their approvals, so every image we share is published with their consent. Thank you for your patience.
-              </p>
-            </div>
-            <div className="mt-8">
-              <p className="text-charcoal font-medium mb-4">Updated Launch Date: 22nd Aug 2026, 11:59 PM</p>
-              <CountdownTimer targetDate="August 22, 2026 23:59:00" />
-            </div>
-            <div className="mt-8 bg-white px-8 py-4 rounded-2xl shadow-lg border border-gold/20">
-              <p className="text-charcoal font-medium">
-                The visual history of Sadhachaar is arriving shortly. Prepare to see transformation in action.
-              </p>
-            </div>
+            <a
+              href="https://forms.gle/pyBuiRvMengcCeLy8"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-4 bg-gold text-charcoal font-medium rounded-xl hover:bg-gold-dark transition-all"
+            >
+              MISSION SADHA
+            </a>
           </motion.div>
         </div>
       </section>
