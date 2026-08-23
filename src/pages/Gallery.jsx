@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import inspirationImage from '../assets/inspiration_img.png';
 
 const galleryCollections = [
   { id: 'm2020', step: '01', title: 'M2020', description: 'The beginnings of our research, learning, and human-development journey.', folderId: '1XuUyd_4ewMyoAumSjs1jJ9LCEjGCYGao' },
@@ -26,6 +27,21 @@ export default function Gallery() {
 
       <section className="pb-24 px-6 md:px-12">
         <div className="max-w-7xl mx-auto">
+          <motion.figure
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
+            className="mb-16 overflow-hidden rounded-3xl border border-gold/30 bg-charcoal p-2 shadow-premium"
+          >
+            <img
+              src={inspirationImage}
+              alt="Our inspiration for Lok Vidya since 2003: Atal Bihari Vajpayee, Abdul Kalam, and Nara Chandra Babu Naidu"
+              loading="lazy"
+              className="w-full h-auto rounded-[1.35rem]"
+            />
+          </motion.figure>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-10">
             {galleryCollections.map((collection) => {
               const isActive = activeCollection.id === collection.id;

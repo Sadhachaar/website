@@ -45,7 +45,7 @@ export default function Layout() {
       
       <Navbar />
       
-      <main className="flex-1 pt-20 overflow-x-hidden">
+      <main className="flex-1 pt-20 overflow-x-clip">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}

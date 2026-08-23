@@ -7,6 +7,7 @@ import advisoryImg5 from '../assets/advisory_img_5.png';
 import advisoryImg6 from '../assets/advisory_img_6.png';
 import advisoryImg7 from '../assets/advisory_img_7.png';
 import advisoryImg8 from '../assets/advisory_img_8.png';
+import FounderJourney from '../components/FounderJourney';
 
 const container = {
   hidden: { opacity: 0 },
@@ -84,21 +85,94 @@ const advisoryTeam = [
       'Daily Worker',
       'Executive Member @ Mission Sadha'
     ]
-  },
-  {
-    img: advisoryImg8,
-    badge: 'First Person with vision and execution for this entire project',
-    name: 'Ryali Venkata Soma Suresh (Soma)',
-    credentials: [
-      'Founder – M2020, Mission Suvarna Avirbha & Mission Sadha',
-      'C/o SADHACHAAR CONSULTING SERVICES'
-    ]
   }
 ];
 
 export default function Team() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-clip">
+      <section className="relative bg-deepCharcoal text-white overflow-x-clip">
+        <div className="absolute inset-0 bg-gradient-to-br from-midnight via-deepCharcoal to-deepNavy" />
+        <div className="absolute -top-32 -left-24 w-96 h-96 rounded-full bg-gold/10 blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[34rem] h-[34rem] rounded-full bg-gold/5 blur-3xl" />
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-32 relative">
+          <div className="grid lg:grid-cols-[minmax(280px,0.8fr)_minmax(0,1.45fr)] gap-12 lg:gap-20 items-start">
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+              >
+                <div className="relative max-w-sm mx-auto lg:mx-0">
+                  <div className="absolute -inset-3 rounded-[2rem] border border-gold/30" />
+                  <div className="absolute -inset-8 rounded-[2.5rem] bg-gold/10 blur-2xl" />
+                  <img
+                    src={advisoryImg8}
+                    alt="Ryali Venkata Soma Suresh"
+                    className="relative w-full aspect-[4/5] object-cover rounded-[1.65rem] border-2 border-gold/50 shadow-2xl"
+                  />
+                  <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gold text-charcoal px-5 py-2.5 rounded-full text-[10px] font-bold tracking-[0.16em] uppercase shadow-gold">
+                    Founder of the Missions
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="pt-4"
+            >
+              <span className="premium-badge !border-gold/30 !bg-gold/10 !text-gold-light mb-7">Founder's Story</span>
+              <h1 className="font-heading text-4xl md:text-6xl font-semibold leading-[1.08] text-white mb-5">
+                Ryali Venkata Soma Suresh
+              </h1>
+              <p className="text-gold-light text-sm md:text-base font-semibold tracking-[0.08em] uppercase leading-relaxed mb-8">
+                Founder • Researcher • Enterprise Transformation Leader • Creator of Satya Dharm
+              </p>
+              <h2 className="font-heading text-2xl md:text-3xl text-gold-light leading-snug mb-7">
+                From a Promise Made in 2004 to a New Possibility for Humanity
+              </h2>
+
+              <div className="space-y-6 text-gray-300 text-[1.05rem] leading-relaxed">
+                <p>
+                  Ryali Venkata Soma Suresh is the Founder behind a journey that began in 2004 as Mission 2020, evolved into Mission Suvarna Avirbha, became Mission Sadha, and today continues its next chapter through Sadhachaar Consulting Services.
+                </p>
+                <p>
+                  His journey is not merely the story of building an organization. It is the story of pursuing a question for more than two decades: What if the deepest problems of human life could be approached through an indigenous knowledge system that helps people understand their own potential, their commitments, their responsibilities and their relationships?
+                </p>
+                <p>
+                  That question became a lifelong research journey. And that journey led to what he calls <span className="text-gold-light font-semibold">Satya Dharm</span>.
+                </p>
+              </div>
+
+              <div className="mt-12 pt-10 border-t border-gold/25">
+                <span className="text-[11px] font-bold tracking-[0.22em] text-gold uppercase">The Beginning</span>
+                <h3 className="font-heading text-2xl md:text-3xl text-white mt-3 mb-6">A Promise to the Nation</h3>
+                <div className="space-y-6 text-gray-300 text-[1.05rem] leading-relaxed">
+                  <p>
+                    On 26 January 2004, during the Republic Day NCC Camp in New Delhi, a young NCC cadet from Andhra Pradesh encountered the national call to think beyond the present and stand for the future. Without knowing exactly how, he made a commitment: <span className="text-white font-semibold">Do something for the Nation.</span>
+                  </p>
+                  <p>
+                    That commitment became Mission 2020. Its foundational principle was simple:
+                  </p>
+                  <p className="inline-block border-y border-gold/40 py-4 text-gold-light font-heading text-xl md:text-2xl tracking-wide">
+                    TARGET ALL • BENEFIT ALL
+                  </p>
+                  <p>
+                    The mission began by studying the AS-IS reality and continuously searching for a stronger TO-BE possibility aligned with the belief that progress should not be limited to a few. What began as a personal commitment gradually became a long-term research and innovation journey.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       <section className="section-padding bg-ivory">
         <div className="max-w-5xl mx-auto text-center">
           <motion.div
@@ -165,6 +239,8 @@ export default function Team() {
           </motion.div>
         </div>
       </section>
+
+      <FounderJourney />
 
       <section className="relative py-20 md:py-24 px-6 md:px-12 bg-gradient-to-b from-midnight via-deepNavy to-midnight">
         <motion.div
